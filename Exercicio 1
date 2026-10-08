@@ -1,0 +1,23 @@
+import java.util.Scanner; 
+    public class Exercicio1{
+        public static void main(String [] args){
+            Scanner sc = new Scanner(System.in);
+            int n, maior , menor;
+            System.out.println("Escolha um número para iniciar diferente de zero: ");
+            n=sc.nextInt();
+            maior = menor = n;
+            while(n!=0){
+                if(n>maior){
+                maior=n;
+                } else if(n < menor){
+                    menor=n;
+                }
+                System.out.println("Digite outro número ou zero para ecerrar o programa: "); 
+                n=sc.nextInt();
+            }
+                System.out.println("O maior número foi: "+maior+ " O menor número foi: "+menor);
+
+           
+             }
+
+        }
