@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class PesquisaPrefeitura {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        double somaSalarios = 0;
+        int totalFilhos = 0;
+        int totalHabitantes = 0;
+        double maiorSalario = 0;
+        int pessoasAte100 = 0;
+        
+        System.out.print("Digite o salário (ou um valor negativo para sair): ");
+        double salario = scanner.nextDouble();
+        
+        while (salario >= 0) {
+            System.out.print("Digite o número de filhos: ");
+            int filhos = scanner.nextInt();
+            
+            totalHabitantes++;
+            somaSalarios += salario;
+            totalFilhos += filhos;
+            
+            if (totalHabitantes == 1 || salario > maiorSalario) {
+                maiorSalario = salario;
+            }
+            
+            if (salario <= 100.0) {
+                pessoasAte100++;
+            }
+            
+            System.out.print("Digite o salário (ou um valor negativo para sair): ");
+            salario = scanner.nextDouble();
+        }
+        
+        if (totalHabitantes > 0) {
+            double mediaSalario = somaSalarios / totalHabitantes;
+            double mediaFilhos = (double) totalFilhos / totalHabitantes;
+            double percentualAte100 = ((double) pessoasAte100 / totalHabitantes) * 100;
+            
+            System.out.println("\n--- Resultados da Pesquisa ---");
+            System.out.println("Média salarial: R$ " + mediaSalario);
+            System.out.println("Média do número de filhos: " + mediaFilhos);
+            System.out.println("Maior salário: R$ " + maiorSalario);
+            System.out.println("Percentual com salário até R$ 100,00: " + percentualAte100 + "%");
+        } else {
+            System.out.println("Nenhum dado válido foi informado.");
+        }
+        
+        scanner.close();
+    }
+}
