@@ -1,0 +1,36 @@
+import java.util.Scanner;
+public class Exercicio10 {
+    /*Onde:
+
+an = termo que se deseja encontrar;
+
+a1 = primeiro termo;
+
+n = posição do termo;
+
+r = razão da PA. */
+    public static void main(String[] args){
+        Scanner sc= new Scanner(System.in);
+        int n0, a1, r, an, sn,n, quantidade=0;
+        ;
+        System.out.println("Informe qual termo da progressão aritmética que deseja saber: ");
+        n=sc.nextInt();
+        System.out.println("Informe a razão da progressão aritmética desejada: ");
+        r=sc.nextInt();
+        System.out.println("Informe o primeiro número da progressão aritmética: ");
+        a1=sc.nextInt();
+        an = a1 + (n - 1) * r;
+        sn = n * (a1 + an) / 2;
+        System.out.println("PA: ");
+        for(int i = a1; i<= an; i+=r){
+            System.out.println(i+" ");
+            quantidade++;
+        }
+        sn=(quantidade * (a1+an))/2;
+        System.out.println("\n A soma dos termos é: " +sn+ ".");
+
+
+
+    }
+    
+}
