@@ -1,0 +1,17 @@
+import java.util.Scanner;
+public class Exercico8 {
+    /*Altura 1 igual a Chico, altura 2 igual a Zé/* */
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        double altura1=1.50, altura2=1.10;
+        int anos=0;
+        do{
+            altura1 +=0.02;
+            altura2 +=0.03;
+            anos ++;
+        }while(altura1 >= altura2);
+        System.out.println("A altura de Zé vai ser maior que a de Chico em: "+anos+ " anos. ");
+        System.out.printf("A altura de Chico em %d vai ser de %.2f.  \n", anos, altura1);
+        System.out.printf("A altura de Zé em %d vai ser de %.2f.", anos , altura2);
+    }
+}
