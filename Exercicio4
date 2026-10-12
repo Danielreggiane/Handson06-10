@@ -1,0 +1,19 @@
+import java.util.Scanner;
+public class Exercicio4 {
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n, soma=0;
+        System.out.println("Informe um número para saber a contagem regressiva: ");
+        n=sc.nextInt();
+        for(int i =n; i >=1; i--){ 
+            System.out.print(i+" ");
+            soma=soma+i;
+        }
+        System.out.println("\nA soma dos números é: " +soma+ ".");
+    
+    
+    
+    
+    }
+    
+}
