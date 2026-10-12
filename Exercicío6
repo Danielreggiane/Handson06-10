@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class CalculoE {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        double E = 1.0; 
+        long fatorial = 1; 
+        
+        for (int i = 1; i <= N; i++) {
+            fatorial = fatorial * i; 
+            E = E + (1.0 / fatorial); 
+        }
+        
+        System.out.println(E);
+        scanner.close();
+    }
+}
