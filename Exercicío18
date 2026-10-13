@@ -1,32 +1,35 @@
-18. Conceito final dos alunos
-Uma turma possui 75 alunos.
+import java.util.Scanner;
 
-Para cada aluno devem ser informados:
+public class ConceitoAlunos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-número de matrícula;
+        for (int i = 1; i <= 75; i++) {
+            System.out.println("Aluno " + i + " de 75:");
+            System.out.print("Número de matrícula: ");
+            int matricula = scanner.nextInt();
 
-nota numérica final.
+            System.out.print("Nota numérica final: ");
+            double nota = scanner.nextDouble();
 
-Conceito
-Notas
-A
+            char conceito;
+            if (nota > 9.0) {
+                conceito = 'A';
+            } else if (nota >= 7.0) {
+                conceito = 'B';
+            } else if (nota >= 5.0) {
+                conceito = 'C';
+            } else {
+                conceito = 'D';
+            }
 
-acima de 9
+            System.out.println("Matrícula: " + matricula + " | Nota final: " + nota + " | Conceito: " + conceito);
+            System.out.println();
+        }
 
-B
-
-7 a 9
-
-C
-
-5 a 7
-
-D
-
-Abaixo de 5
-
-Para cada estudante, mostre:
-
+        scanner.close();
+    }
+}
 
 Copiar
 Matrícula
