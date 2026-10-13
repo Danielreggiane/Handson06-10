@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+public class ProducaoFabrica {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double salarioMinimo = 1621.00;
+        
+        double totalFolhaPagamento = 0;
+        int totalPecas = 0;
+        int totalHomens = 0;
+        int somaPecasHomens = 0;
+        int totalMulheres = 0;
+        int somaPecasMulheres = 0;
+        
+        double maiorSalario = -1;
+        int operarioMaiorSalario = 0;
+        
+        for (int i = 1; i <= 15; i++) {
+            System.out.print("Número do operário: ");
+            int numero = scanner.nextInt();
+            
+            System.out.print("Quantidade de peças produzidas: ");
+            int pecas = scanner.nextInt();
+            
+            char sexo;
+            while (true) {
+                System.out.print("Sexo (M - Masculino, F - Feminino): ");
+                sexo = scanner.next().toUpperCase().charAt(0);
+                if (sexo == 'M' || sexo == 'F') {
+                    break;
+                }
+                System.out.println("Sexo inválido! Tente novamente.");
+            }
+            
+            double salario;
+            if (pecas <= 30) {
+                salario = salarioMinimo;
+            } else if (pecas <= 50) {
+                salario = salarioMinimo + (pecas - 30) * (0.03 * salarioMinimo);
+            } else {
+                salario = salarioMinimo + (pecas - 30) * (0.05 * salarioMinimo);
+            }
+            
+            totalFolhaPagamento += salario;
+            totalPecas += pecas;
+            
+            if (sexo == 'M') {
+                totalHomens++;
+                somaPecasHomens += pecas;
+            } else {
+                totalMulheres++;
+                somaPecasMulheres += pecas;
+            }
+            
+            if (i == 1 || salario > maiorSalario) {
+                maiorSalario = salario;
+                operarioMaiorSalario = numero;
+            }
+            
+            System.out.println("Operário: " + numero + " | Salário: R$ " + salario);
+            System.out.println();
+        }
+        
+        double mediaPecasHomens = totalHomens > 0 ? (double) somaPecasHomens / totalHomens : 0;
+        double mediaPecasMulheres = totalMulheres > 0 ? (double) somaPecasMulheres / totalMulheres : 0;
+        
+        System.out.println("--- Resultados Finais ---");
+        System.out.println("Total da folha de pagamento: R$ " + totalFolhaPagamento);
+        System.out.println("Quantidade total de peças produzidas: " + totalPecas);
+        System.out.println("Média de peças produzidas pelos homens: " + mediaPecasHomens);
+        System.out.println("Média de peças produzidas pelas mulheres: " + mediaPecasMulheres);
+        System.out.println("Operário com o maior salário (Número " + operarioMaiorSalario + "): R$ " + maiorSalario);
+        
+        scanner.close();
+    }
+}
