@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class FaixaEtaria {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int faixa1 = 0;
+        int faixa2 = 0;
+        int faixa3 = 0;
+        int faixa4 = 0;
+        int faixa5 = 0;
+        int totalPessoas = 15;
+        
+        for (int i = 1; i <= totalPessoas; i++) {
+            System.out.print("Digite a idade da pessoa " + i + ": ");
+            int idade = scanner.nextInt();
+            
+            if (idade <= 15) {
+                faixa1++;
+            } else if (idade <= 30) {
+                faixa2++;
+            } else if (idade <= 45) {
+                faixa3++;
+            } else if (idade <= 60) {
+                faixa4++;
+            } else {
+                faixa5++;
+            }
+        }
+        
+        double percentualPrimeira = ((double) faixa1 / totalPessoas) * 100;
+        double percentualUltima = ((double) faixa5 / totalPessoas) * 100;
+        
+        System.out.println("\n--- Resultados da Faixa Etária ---");
+        System.out.println("Quantidade na Faixa 1 (até 15 anos): " + faixa1);
+        System.out.println("Quantidade na Faixa 2 (16 a 30 anos): " + faixa2);
+        System.out.println("Quantidade na Faixa 3 (31 a 45 anos): " + faixa3);
+        System.out.println("Quantidade na Faixa 4 (46 a 60 anos): " + faixa4);
+        System.out.println("Quantidade na Faixa 5 (61 anos ou mais): " + faixa5);
+        System.out.println("Percentual da primeira faixa: " + percentualPrimeira + "%");
+        System.out.println("Percentual da última faixa: " + percentualUltima + "%");
+        
+        scanner.close();
+    }
+}
