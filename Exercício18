@@ -1,0 +1,34 @@
+18. Conceito final dos alunos
+Uma turma possui 75 alunos.
+
+Para cada aluno devem ser informados:
+
+número de matrícula;
+
+nota numérica final.
+
+Conceito
+Notas
+A
+
+acima de 9
+
+B
+
+7 a 9
+
+C
+
+5 a 7
+
+D
+
+Abaixo de 5
+
+Para cada estudante, mostre:
+
+
+Copiar
+Matrícula
+Nota final
+Conceito
