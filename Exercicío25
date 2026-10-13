@@ -1,0 +1,133 @@
+import java.util.Scanner;
+
+public class AnaliseProdutos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        double somaValoresAdicionais = 0;
+        double maiorPrecoFinal = 0;
+        double menorPrecoFinal = 0;
+        double totalImpostos = 0;
+        int qtdBarato = 0;
+        int qtdNormal = 0;
+        int qtdCaro = 0;
+        
+        int totalProdutos = 12;
+        
+        for (int i = 1; i <= totalProdutos; i++) {
+            System.out.println("Produto " + i + " de " + totalProdutos + ":");
+            System.out.print("Preço unitário: ");
+            double precoUnitario = scanner.nextDouble();
+            
+            char refrigeracao;
+            while (true) {
+                System.out.print("Necessidade de refrigeração (S - Sim, N - Não): ");
+                refrigeracao = scanner.next().toUpperCase().charAt(0);
+                if (refrigeracao == 'S' || refrigeracao == 'N') {
+                    break;
+                }
+                System.out.println("Opção inválida! Tente novamente.");
+            }
+            
+            char categoria;
+            while (true) {
+                System.out.print("Categoria (A - Alimentação, L - Limpeza, V - Vestuário): ");
+                categoria = scanner.next().toUpperCase().charAt(0);
+                if (categoria == 'A' || categoria == 'L' || categoria == 'V') {
+                    break;
+                }
+                System.out.println("Categoria inválida! Tente novamente.");
+            }
+            
+            double custoEstocagem = 0;
+            if (precoUnitario <= 20.00) {
+                if (categoria == 'A') {
+                    custoEstocagem = 2.00;
+                } else if (categoria == 'L') {
+                    custoEstocagem = 3.00;
+                } else if (categoria == 'V') {
+                    custoEstocagem = 4.00;
+                }
+            } else if (precoUnitario <= 50.00) {
+                if (refrigeracao == 'S') {
+                    custoEstocagem = 6.00;
+                } else {
+                    custoEstocagem = 0.00;
+                }
+            } else {
+                if (refrigeracao == 'S') {
+                    if (categoria == 'A') {
+                        custoEstocagem = 5.00;
+                    } else if (categoria == 'L') {
+                        custoEstocagem = 2.00;
+                    } else if (categoria == 'V') {
+                        custoEstocagem = 4.00;
+                    }
+                } else {
+                    if (categoria == 'A' || categoria == 'V') {
+                        custoEstocagem = 0.00;
+                    } else if (categoria == 'L') {
+                        custoEstocagem = 1.00;
+                    }
+                }
+            }
+            
+            double imposto = 0;
+            if (categoria == 'A' && refrigeracao == 'S') {
+                imposto = precoUnitario * 0.04;
+            } else {
+                imposto = precoUnitario * 0.02;
+            }
+            
+            double precoFinal = precoUnitario + custoEstocagem + imposto;
+            
+            String classificacao;
+            if (precoFinal <= 20.00) {
+                classificacao = "Barato";
+                qtdBarato++;
+            } else if (precoFinal <= 100.00) {
+                classificacao = "Normal";
+                qtdNormal++;
+            } else {
+                classificacao = "Caro";
+                qtdCaro++;
+            }
+            
+            somaValoresAdicionais += (custoEstocagem + imposto);
+            totalImpostos += imposto;
+            
+            if (i == 1) {
+                maiorPrecoFinal = precoFinal;
+                menorPrecoFinal = precoFinal;
+            } else {
+                if (precoFinal > maiorPrecoFinal) {
+                    maiorPrecoFinal = precoFinal;
+                }
+                if (precoFinal < menorPrecoFinal) {
+                    menorPrecoFinal = precoFinal;
+                }
+            }
+            
+            System.out.println("\n--- Resumo do Produto ---");
+            System.out.println("Preço unitário: R$ " + precoUnitario);
+            System.out.println("Custo de estocagem: R$ " + custoEstocagem);
+            System.out.println("Imposto: R$ " + imposto);
+            System.out.println("Preço final: R$ " + precoFinal);
+            System.out.println("Classificação: " + classificacao);
+            System.out.println("-------------------------\n");
+        }
+        
+        double mediaValoresAdicionais = somaValoresAdicionais / totalProdutos;
+        
+        System.out.println("=== Resultados Finais da Análise ===");
+        System.out.println("Média dos valores adicionais (estocagem + imposto): R$ " + mediaValoresAdicionais);
+        System.out.println("Maior preço final: R$ " + maiorPrecoFinal);
+        System.out.println("Menor preço final: R$ " + menorPrecoFinal);
+        System.out.println("Total de impostos: R$ " + totalImpostos);
+        System.out.println("Quantidade de produtos 'Barato': " + qtdBarato);
+        System.out.println("Quantidade de produtos 'Normal': " + qtdNormal);
+        System.out.println("Quantidade de produtos 'Caro': " + qtdCaro);
+        
+        scanner.close();
+    }
+}
