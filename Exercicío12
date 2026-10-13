@@ -1,0 +1,61 @@
+import java.util.Scanner;
+public class Exercicio12 {
+    public static void main(String[]args){
+        Scanner sc = new Scanner(System.in);
+        int maior=0, qmulher=0, sexo, olhos, cabelo, idade, f=0, louro=0, verde=0;
+        do{
+        System.out.println("""
+                
+                
+            Informe seu sexo:
+            1 - Masculino
+            2 - Feminino
+               """);
+        sexo =sc.nextInt();
+        switch(sexo){
+            case 2:
+                f +=1;
+                break;
+            }
+             System.out.println("""
+                    Informe a cor do seu olho:
+                    1 - Azul
+                    2 - Verde
+                    3 - Castanho
+
+                    """);
+                    olhos=sc.nextInt();
+                    switch(olhos){
+                    case 1:
+                        verde+=1;
+                        break;
+                    }
+                    
+            System.out.println("""
+                    Informe a cor do seu cabelo:
+                    1 - Louro
+                    2 - Castanho 
+                    3 - Preto
+
+                    """);
+                    cabelo=sc.nextInt();
+                    switch(cabelo){
+                    case 1:
+                        louro+=1;
+                        break;
+                    }
+                        System.out.println("Informe sua idade: ");
+                        idade=sc.nextInt();
+                        if(idade>0){
+                            maior = idade;
+                        }
+                        if(sexo==2 && olhos ==2 && cabelo ==1 && idade > 18 && idade < 35){
+                            qmulher+=1;
+                        }
+    
+        }while(idade !=-1);
+        System.out.println("A maior idade informada foi: " +maior);
+          System.out.println("A quantidade de mulheres com olhos verdes, cabelos louros, e idade entre 18 e 35 anos foi de:  " +qmulher);
+    }
+}
+        
