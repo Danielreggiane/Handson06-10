@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+public class FolhaPagamento {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double salarioMinimo = 1621.00;
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("Funcionário " + i + " de 10:");
+            System.out.print("Código: ");
+            int codigo = scanner.nextInt();
+
+            System.out.print("Número de horas trabalhadas no mês: ");
+            int horasTrabalhadas = scanner.nextInt();
+
+            char turno;
+            while (true) {
+                System.out.print("Turno (M - Matutino, V - Vespertino, N - Noturno): ");
+                turno = scanner.next().toUpperCase().charAt(0);
+                if (turno == 'M' || turno == 'V' || turno == 'N') {
+                    break;
+                }
+                System.out.println("Turno inválido! Tente novamente.");
+            }
+
+            char categoria;
+            while (true) {
+                System.out.print("Categoria (O - Operário, G - Gerente): ");
+                categoria = scanner.next().toUpperCase().charAt(0);
+                if (categoria == 'O' || categoria == 'G') {
+                    break;
+                }
+                System.out.println("Categoria inválida! Tente novamente.");
+            }
+
+            double percentualHora = 0;
+            if (categoria == 'G') {
+                if (turno == 'N') {
+                    percentualHora = 0.18;
+                } else {
+                    percentualHora = 0.15;
+                }
+            } else if (categoria == 'O') {
+                if (turno == 'N') {
+                    percentualHora = 0.13;
+                } else {
+                    percentualHora = 0.10;
+                }
+            }
+
+            double valorHora = salarioMinimo * percentualHora;
+            double salarioInicial = horasTrabalhadas * valorHora;
+
+            double auxilioAlimentacao = 0;
+            if (salarioInicial <= 1080.00) {
+                auxilioAlimentacao = salarioInicial * 0.20;
+            } else if (salarioInicial <= 2160.00) {
+                auxilioAlimentacao = salarioInicial * 0.15;
+            } else {
+                auxilioAlimentacao = salarioInicial * 0.05;
+            }
+
+            double salarioFinal = salarioInicial + auxilioAlimentacao;
+
+            System.out.println("\n--- Resumo do Funcionário ---");
+            System.out.println("Código: " + codigo);
+            System.out.println("Horas trabalhadas: " + horasTrabalhadas);
+            System.out.println("Valor da hora trabalhada: R$ " + valorHora);
+            System.out.println("Salário inicial: R$ " + salarioInicial);
+            System.out.println("Auxílio-alimentação: R$ " + auxilioAlimentacao);
+            System.out.println("Salário final: R$ " + salarioFinal);
+            System.out.println("-----------------------------\n");
+        }
+
+        scanner.close();
+    }
+}
