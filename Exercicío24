@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class MortalidadeInfantil {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Digite a quantidade de crianças nascidas no período: ");
+        int totalNascidas = scanner.nextInt();
+        
+        int femMortas = 0;
+        int mascMortas = 0;
+        int viveram24ouMenos = 0;
+        
+        for (int i = 1; i <= totalNascidas; i++) {
+            System.out.println("Criança " + i + " de " + totalNascidas + ":");
+            System.out.print("Sexo (M - Masculino, F - Feminino): ");
+            char sexo = scanner.next().toUpperCase().charAt(0);
+            
+            System.out.print("Tempo de vida (em meses): ");
+            int tempoVida = scanner.nextInt();
+            
+            if (sexo == 'F') {
+                femMortas++;
+            } else if (sexo == 'M') {
+                mascMortas++;
+            }
+            
+            if (tempoVida <= 24) {
+                viveram24ouMenos++;
+            }
+            
+            System.out.println();
+        }
+        
+        double percFem = totalNascidas > 0 ? ((double) femMortas / totalNascidas) * 100 : 0;
+        double percMasc = totalNascidas > 0 ? ((double) mascMortas / totalNascidas) * 100 : 0;
+        double perc24 = totalNascidas > 0 ? ((double) viveram24ouMenos / totalNascidas) * 100 : 0;
+        
+        System.out.println("--- Resultados da Pesquisa ---");
+        System.out.println("Percentual de crianças do sexo feminino que morreram: " + percFem + "%");
+        System.out.println("Percentual de crianças do sexo masculino que morreram: " + percMasc + "%");
+        System.out.println("Percentual de crianças que viveram 24 meses ou menos: " + perc24 + "%");
+        
+        scanner.close();
+    }
+}
