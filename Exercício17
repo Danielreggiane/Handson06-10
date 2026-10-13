@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+public class EstatisticaAcidentes {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int maiorAcidentes = 0;
+        int codigoMaior = 0;
+        int menorAcidentes = 0;
+        int codigoMenor = 0;
+        long somaVeiculos = 0;
+        
+        for (int i = 1; i <= 200; i++) {
+            System.out.println("Cidade " + i + " de 200:");
+            System.out.print("Código da cidade: ");
+            int codigo = scanner.nextInt();
+            
+            System.out.print("Estado: ");
+            String estado = scanner.next();
+            
+            System.out.print("Número de veículos de passeio: ");
+            int veiculos = scanner.nextInt();
+            
+            System.out.print("Número de acidentes de trânsito com vítimas: ");
+            int acidentes = scanner.nextInt();
+            
+            somaVeiculos += veiculos;
+            
+            if (i == 1) {
+                maiorAcidentes = acidentes;
+                codigoMaior = codigo;
+                menorAcidentes = acidentes;
+                codigoMenor = codigo;
+            } else {
+                if (acidentes > maiorAcidentes) {
+                    maiorAcidentes = acidentes;
+                    codigoMaior = codigo;
+                }
+                if (acidentes < menorAcidentes) {
+                    menorAcidentes = acidentes;
+                    codigoMenor = codigo;
+                }
+            }
+            
+            System.out.println();
+        }
+        
+        double mediaVeiculos = (double) somaVeiculos / 200.0;
+        
+        System.out.println("--- Resultados da Pesquisa ---");
+        System.out.println("Maior número de acidentes: " + maiorAcidentes + " (Código da cidade: " + codigoMaior + ")");
+        System.out.println("Menor número de acidentes: " + menorAcidentes + " (Código da cidade: " + codigoMenor + ")");
+        System.out.println("Média do número de veículos nas 200 cidades: " + mediaVeiculos);
+        
+        scanner.close();
+    }
+}
