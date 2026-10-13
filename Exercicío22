@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class SequenciaFibonacci {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Digite a quantidade de termos N: ");
+        int N = scanner.nextInt();
+        
+        if (N <= 0) {
+            System.out.println("Por favor, digite um número maior que zero.");
+        } else {
+            long t1 = 0;
+            long t2 = 1;
+            
+            System.out.print("Sequência de Fibonacci: ");
+            
+            for (int i = 1; i <= N; i++) {
+                if (i == 1) {
+                    System.out.print(t1);
+                } else if (i == 2) {
+                    System.out.print(" " + t2);
+                } else {
+                    long proximo = t1 + t2;
+                    System.out.print(" " + proximo);
+                    t1 = t2;
+                    t2 = proximo;
+                }
+            }
+            System.out.println();
+        }
+        
+        scanner.close();
+    }
+}
