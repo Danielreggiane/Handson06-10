@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class AtualizacaoPrecos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        double somaPrecosAntes = 0;
+        double somaPrecosDepois = 0;
+        int totalProdutos = 0;
+        
+        System.out.print("Digite o código do produto (ou um valor negativo para sair): ");
+        int codigo = scanner.nextInt();
+        
+        while (codigo >= 0) {
+            System.out.print("Digite o preço atual do produto: ");
+            double precoAtual = scanner.nextDouble();
+            
+            double novoPreco = precoAtual * 1.20;
+            
+            somaPrecosAntes += precoAtual;
+            somaPrecosDepois += novoPreco;
+            totalProdutos++;
+            
+            System.out.println("Código: " + codigo + " | Novo preço: R$ " + novoPreco);
+            System.out.println();
+            
+            System.out.print("Digite o código do produto (ou um valor negativo para sair): ");
+            codigo = scanner.nextInt();
+        }
+        
+        if (totalProdutos > 0) {
+            double mediaAntes = somaPrecosAntes / totalProdutos;
+            double mediaDepois = somaPrecosDepois / totalProdutos;
+            
+            System.out.println("\n--- Resumo Final ---");
+            System.out.println("Média dos preços antes do aumento: R$ " + mediaAntes);
+            System.out.println("Média dos preços após o aumento: R$ " + mediaDepois);
+        } else {
+            System.out.println("Nenhum produto foi cadastrado.");
+        }
+        
+        scanner.close();
+    }
+}
